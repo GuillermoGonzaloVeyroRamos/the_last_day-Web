@@ -1,23 +1,55 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Blog from './components/Blog';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <main className="main-content">
+        <section id="home" className="hero-section">
+          <div className="hero-content">
+            <h2 className="hero-title">Welcome to The Last Day</h2>
+            <p className="hero-description">Explore the updates and new features of the game!</p>
+            <button className="cta-button">Play Now</button>
+          </div>
+        </section>
+        
+        <section className="screenshots-section">
+          <h2 className="section-title">Game Screenshots</h2>
+          <div className="screenshots-grid">
+            <div className="screenshot-item">
+              <img src={process.env.PUBLIC_URL + '/imagen1.jpg'} alt="Zombie horde attack" />
+              <div className="screenshot-overlay">
+                <p>Survive massive zombie hordes</p>
+              </div>
+            </div>
+            <div className="screenshot-item">
+              <img src={process.env.PUBLIC_URL + '/imagen1.jpg'} alt="Weapon crafting" />
+              <div className="screenshot-overlay">
+                <p>Craft your weapons</p>
+              </div>
+            </div>
+            <div className="screenshot-item">
+              <img src={process.env.PUBLIC_URL + '/imagen1.jpg'} alt="Safe house" />
+              <div className="screenshot-overlay">
+                <p>Find safe houses to survive</p>
+              </div>
+            </div>
+            <div className="screenshot-item">
+              <img src={process.env.PUBLIC_URL + '/imagen1.jpg'} alt="Multiplayer combat" />
+              <div className="screenshot-overlay">
+                <p>Team up with other survivors</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <Blog />
+      </main>
+      <Footer />
     </div>
   );
 }
