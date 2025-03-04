@@ -1,56 +1,29 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Blog from './components/Blog';
+import AboutUs from './components/AboutUs';
+import Home from './components/Home';
+import Contact from './components/Contact';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <main className="main-content">
-        <section id="home" className="hero-section">
-          <div className="hero-content">
-            <h2 className="hero-title">Welcome to The Last Day</h2>
-            <p className="hero-description">Explore the updates and new features of the game!</p>
-            <button className="cta-button">Play Now</button>
-          </div>
-        </section>
-        
-        <section className="screenshots-section">
-          <h2 className="section-title">Game Screenshots</h2>
-          <div className="screenshots-grid">
-            <div className="screenshot-item">
-              <img src={process.env.PUBLIC_URL + '/imagen1.jpg'} alt="Zombie horde attack" />
-              <div className="screenshot-overlay">
-                <p>Survive massive zombie hordes</p>
-              </div>
-            </div>
-            <div className="screenshot-item">
-              <img src={process.env.PUBLIC_URL + '/imagen1.jpg'} alt="Weapon crafting" />
-              <div className="screenshot-overlay">
-                <p>Craft your weapons</p>
-              </div>
-            </div>
-            <div className="screenshot-item">
-              <img src={process.env.PUBLIC_URL + '/imagen1.jpg'} alt="Safe house" />
-              <div className="screenshot-overlay">
-                <p>Find safe houses to survive</p>
-              </div>
-            </div>
-            <div className="screenshot-item">
-              <img src={process.env.PUBLIC_URL + '/imagen1.jpg'} alt="Multiplayer combat" />
-              <div className="screenshot-overlay">
-                <p>Team up with other survivors</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <Blog />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

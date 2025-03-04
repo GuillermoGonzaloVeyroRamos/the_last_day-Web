@@ -22,15 +22,6 @@
   margin: 0 auto;
 }
 
-@media (max-width: 768px) {
-  .blog-section {
-    padding: 2rem 1rem;
-  }
-  
-  .blog-grid {
-    grid-template-columns: 1fr;
-  }
-}
 .blog-card {
   background: var(--secondary-color);
   border-radius: 15px;
@@ -83,6 +74,86 @@
   text-decoration: underline;
 }
 
+/* Blog page specific styles */
+.blog-page {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  width: 100%;
+}
+
+.blog-banner {
+  height: 40vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+              url('/public/descarga.jpeg') center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(139, 0, 0, 0.1),
+    rgba(139, 0, 0, 0.1) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  pointer-events: none;
+}
+
+.blog-page-title {
+  font-size: 4rem;
+  font-family: 'Impact', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--text-color);
+  text-shadow: 
+    0 0 10px rgba(178, 34, 34, 0.7),
+    0 0 20px rgba(178, 34, 34, 0.5);
+  position: relative;
+  padding: 0 20px;
+  z-index: 2;
+}
+
+.blog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.view-all-container {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.view-all-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 2px solid var(--highlight-color);
+  transition: all 0.3s ease;
+}
+
+.view-all-button:hover {
+  background-color: var(--highlight-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(178, 34, 34, 0.4);
+}
+
 @media (max-width: 768px) {
   .blog-section {
     padding: 2rem 1rem;
@@ -90,5 +161,13 @@
   
   .blog-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .blog-page-title {
+    font-size: 2.5rem;
+  }
+  
+  .blog-container {
+    padding: 2rem 1rem;
   }
 }
