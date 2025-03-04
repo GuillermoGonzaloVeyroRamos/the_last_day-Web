@@ -23,7 +23,7 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Validate form
@@ -36,22 +36,41 @@ const Contact = () => {
       return;
     }
     
-    // Simulate form submission
-    setTimeout(() => {
-      setFormStatus({
-        submitted: true,
-        error: false,
-        message: 'Your message has been sent. We will contact you soon!'
+    try {
+      // Replace 'YOUR_FORMSPREE_ENDPOINT' with your actual Formspree form ID
+      const response = await fetch('https://formspree.io/f/mwpvnjgp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
       });
       
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+      if (response.ok) {
+        setFormStatus({
+          submitted: true,
+          error: false,
+          message: 'Your message has been sent. We will contact you soon!'
+        });
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      setFormStatus({
+        submitted: false,
+        error: true,
+        message: 'There was a problem sending your message. Please try again later.'
       });
-    }, 1000);
+      console.error('Form submission error:', error);
+    }
   };
 
   return (
